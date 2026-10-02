@@ -90,3 +90,29 @@ Classification Model
 Time-Aware Evaluation
         ↓
 Predictions & Analysis
+
+## Results
+
+### Regression Performance
+
+| Model | MAE | RMSE | R² |
+|---|---:|---:|---:|
+| Recent 5-Match Baseline | 17.482 | 23.648 | -0.002 |
+| Linear Regression | 16.837 | 23.905 | -0.024 |
+| Random Forest | 16.399 | 22.300 | 0.109 |
+
+The Random Forest regression model produced the lowest MAE among the evaluated regression approaches. On the chronological test set, it achieved an MAE of 16.399 runs, RMSE of 22.300 runs and R² of 0.109.
+
+### Classification Analysis
+
+The classification experiment divided player innings into Low, Moderate and High performance classes.
+
+The dataset was imbalanced:
+
+- Low: 62.02%
+- Moderate: 21.11%
+- High: 16.87%
+
+The initial Random Forest classifier achieved 58.3% accuracy and a weighted F1-score of 0.430. A class-balanced Random Forest achieved 58.4% accuracy and a macro F1-score of 0.264.
+
+The confusion matrix showed weak recognition of the Moderate and High classes. This indicates that the current classification formulation is strongly affected by class imbalance and should be treated as an exploratory analysis rather than a high-performing predictive model.
