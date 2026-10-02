@@ -1,28 +1,92 @@
-# IPL Player Performance Prediction — NatWest Data Science Portfolio Project
+# IPL Player Performance Prediction — Data Science Portfolio Project
 
-## Dataset processed
-- IPL match JSON files: **1,243**
+## Project Overview
+
+This project develops a machine learning pipeline for predicting an IPL cricket player's runs in an upcoming innings using historical player performance and match context.
+
+The project demonstrates an end-to-end data science workflow including:
+
+- Data preparation
+- Exploratory Data Analysis (EDA)
+- Feature engineering
+- Historical and recent-form analysis
+- Baseline modelling
+- Regression modelling
+- Classification modelling
+- Model evaluation
+- Prediction analysis
+- Time-aware validation
+
+The project was developed as part of my Data Science / Business Analytics portfolio, with a focus on applying machine learning to a real-world sports analytics problem.
+
+---
+
+## Dataset
+
+The analysis uses IPL ball-by-ball match data sourced from Cricsheet.
+
+### Dataset scale
+
+- IPL matches: **1,243**
 - Delivery records: **295,732**
 - Player-match records: **23,856**
-- Modelling rows (minimum 3 previous innings): **21,711**
-- Unique players in player-match data: **785**
+- Modelling records: **21,711**
+- Unique players: **785**
+- Seasons: **19**
 
-## Project
-Predict a player's runs in the current IPL innings using historical player performance and match context. The modelling dataset uses chronological, leakage-aware features.
+The raw ball-by-ball dataset is not included in this repository because of its large file size.
 
-## Files
-- `data/match_summary.csv` — 1 row per match
-- `data/player_match_stats.csv` — player-level match statistics
-- `data/player_match_model.csv` — modelling-ready data
-- `data/ipl_deliveries.csv.gz` — delivery-level dataset
-- `notebooks/01_IPL_Player_Performance_Prediction.ipynb` — complete Jupyter notebook
-- `src/build_features.py` — feature-generation script
-- `requirements.txt` — dependencies
+The repository instead contains the processed modelling dataset used by the machine learning workflow.
 
-## Run
-Open the `notebooks` folder in Jupyter and run the notebook from top to bottom. If needed:
-`pip install -r requirements.txt`
+---
 
-## Source
-Cricsheet — https://cricsheet.org/
-Retain appropriate source attribution when using or redistributing the dataset or derived work.
+## Business / Analytical Question
+
+### Can a player's historical performance and match context be used to predict their runs in an upcoming IPL innings?
+
+The model uses information that would be available before the target innings, including:
+
+- Previous match performance
+- Previous strike rate
+- Career batting average
+- Career strike rate
+- Recent five-match average
+- Recent ten-match average
+- Previous boundaries
+- Recent boundaries
+- Opponent performance history
+- Batting team
+- Opponent
+- Innings
+- Season
+
+Current-match performance variables are excluded from the prediction features to reduce data leakage.
+
+---
+
+## Project Workflow
+
+```text
+IPL Ball-by-Ball Data
+        ↓
+Data Cleaning
+        ↓
+Player-Match Aggregation
+        ↓
+Historical Feature Engineering
+        ↓
+Recent Form Features
+        ↓
+Opponent Performance Features
+        ↓
+Exploratory Data Analysis
+        ↓
+Baseline Model
+        ↓
+Regression Models
+        ↓
+Classification Model
+        ↓
+Time-Aware Evaluation
+        ↓
+Predictions & Analysis
