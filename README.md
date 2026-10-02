@@ -91,6 +91,8 @@ Time-Aware Evaluation
         ↓
 Predictions & Analysis
 
+---
+
 ## Results
 
 ### Regression Performance
